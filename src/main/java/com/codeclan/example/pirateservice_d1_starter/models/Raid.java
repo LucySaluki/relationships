@@ -62,5 +62,9 @@ public class Raid {
     public void setLoot(int loot) {
         this.loot = loot;
     }
+
+    public void addPirateToRaid(Pirate pirate){
+        this.pirates.add(pirate);
+    }
 }
 

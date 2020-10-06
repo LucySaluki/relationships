@@ -39,10 +39,9 @@ public class Pirate {
                     updatable = false)
             }
     )
-
     private List<Raid> raids;
 
-    public Pirate(String firstName, String lastName, int age, Ship ship, List raids) {
+    public Pirate(String firstName, String lastName, int age, Ship ship) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -51,8 +50,9 @@ public class Pirate {
     }
 
 
-    public Pirate(String jack, String sparrow, int i, Ship ship, Raid raid) {
+    public Pirate() {
     }
+
 
     public String getFirstName() {
         return firstName;
@@ -100,5 +100,9 @@ public class Pirate {
 
     public void setRaids(List<Raid> raids) {
         this.raids = raids;
+    }
+
+    public void addRaidsToPirate(Raid raid){
+        this.raids.add(raid);
     }
 }

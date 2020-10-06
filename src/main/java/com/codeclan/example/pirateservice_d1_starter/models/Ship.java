@@ -51,4 +51,8 @@ public class Ship {
     public void setPirates(List<Pirate> pirates) {
         this.pirates = pirates;
     }
+
+    public void addPirateToShip(Pirate pirate){
+        this.pirates.add(pirate);
+    }
 }
