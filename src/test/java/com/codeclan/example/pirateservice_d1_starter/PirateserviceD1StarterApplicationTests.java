@@ -39,13 +39,15 @@ public class PirateserviceD1StarterApplicationTests {
 		Raid raid= new Raid("Tortuga",1000);
 		raidRepository.save(raid);
 		Pirate pirate = new Pirate("Jack", "Sparrow", 32,ship);
-		pirateRepository.save(pirate);
+//		pirateRepository.save(pirate);
 		Pirate pirate1 = new Pirate("Hector", "Barbossa",58,ship);
-		pirateRepository.save(pirate1);
+//		pirateRepository.save(pirate1);
 		raid.addPirateToRaid(pirate);
 		raid.addPirateToRaid(pirate1);
 		pirate.addRaidsToPirate(raid);
 		pirate1.addRaidsToPirate(raid);
+		pirateRepository.save(pirate);
+		pirateRepository.save(pirate1);
 	}
 
 }
