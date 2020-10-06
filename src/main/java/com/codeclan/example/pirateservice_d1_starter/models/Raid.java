@@ -1,5 +1,8 @@
 package com.codeclan.example.pirateservice_d1_starter.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +19,10 @@ public class Raid {
     private String location;
     @Column(name="loot")
     private int loot;
+
+    @JsonBackReference
     @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             name = "pirates_raids",
             joinColumns = { @JoinColumn(

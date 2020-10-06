@@ -1,5 +1,6 @@
 package com.codeclan.example.pirateservice_d1_starter.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -15,8 +16,9 @@ public class Ship {
     @Column(name="name")
     private String name;
 
-    @JsonIgnoreProperties({"ship"})
-    @OneToMany(mappedBy = "ship")
+    @JsonBackReference
+    //@JsonIgnoreProperties({"ship"})
+    @OneToMany(mappedBy = "ship", fetch = FetchType.LAZY)
     private List<Pirate> pirates;
 
     public Ship(String name) {

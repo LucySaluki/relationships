@@ -1,5 +1,9 @@
 package com.codeclan.example.pirateservice_d1_starter.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +25,15 @@ public class Pirate {
     @Column(name = "age")
     private int age;
 
+    @JsonIgnoreProperties({"pirates"})
     @ManyToOne
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name="ship_id", nullable=false)
     private Ship ship;
 
+    @JsonIgnoreProperties({"pirates"})
     @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             name = "pirates_raids",
             joinColumns = { @JoinColumn(
