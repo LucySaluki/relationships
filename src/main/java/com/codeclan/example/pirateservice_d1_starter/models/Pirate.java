@@ -102,7 +102,7 @@ public class Pirate {
         this.raids = raids;
     }
 
-    public void addRaidsToPirate(Raid raid){
+    public void addRaidToPirate(Raid raid){
         this.raids.add(raid);
     }
 }
