@@ -1,6 +1,8 @@
 package com.codeclan.example.pirateservice_d1_starter.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "pirates")
@@ -19,14 +21,37 @@ public class Pirate {
     @Column(name = "age")
     private int age;
 
+    @ManyToOne
+    @JoinColumn(name="ship_id", nullable=false)
+    private Ship ship;
 
-    public Pirate(String firstName, String lastName, int age) {
+    @ManyToMany
+    @JoinTable(
+            name = "pirates_raids",
+            joinColumns = { @JoinColumn(
+                    name = "pirate_id",
+                    nullable = false,
+                    updatable = false)
+            },
+            inverseJoinColumns = { @JoinColumn(
+                    name = "raid_id",
+                    nullable = false,
+                    updatable = false)
+            }
+    )
+
+    private List<Raid> raids;
+
+    public Pirate(String firstName, String lastName, int age, Ship ship, List raids) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+        this.ship = ship;
+        this.raids = new ArrayList<Raid>();
     }
 
-    public Pirate() {
+
+    public Pirate(String jack, String sparrow, int i, Ship ship, Raid raid) {
     }
 
     public String getFirstName() {
@@ -59,5 +84,21 @@ public class Pirate {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Ship getShip() {
+        return ship;
+    }
+
+    public void setShip(Ship ship) {
+        this.ship = ship;
+    }
+
+    public List<Raid> getRaids() {
+        return raids;
+    }
+
+    public void setRaids(List<Raid> raids) {
+        this.raids = raids;
     }
 }
